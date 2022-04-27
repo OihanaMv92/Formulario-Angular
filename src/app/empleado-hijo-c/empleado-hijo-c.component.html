@@ -1,0 +1,16 @@
+<div class="container">
+    <div class="row">
+        <div class="col">
+
+            <div>
+                <!-- añadir el nombre identificativo que hemos añadido en el html padre -->
+                {{indice+1}}: {{empleadoDeLista.nombre}} {{empleadoDeLista.apellido}} {{empleadoDeLista.cargo}} {{empleadoDeLista.salario}}€
+            </div>
+            <ul style="list-style: none;">
+                <li *ngFor="let caracteristica of arrayCaracteristicas">{{caracteristica}} </li>
+            </ul>
+        </div>
+        <app-caracteristicas-empleado-c (caracteristicasEmpleados)="agregarCaracteristica($event)"></app-caracteristicas-empleado-c>
+
+    </div>
+</div>

@@ -1,6 +1,7 @@
 import { dashCaseToCamelCase } from '@angular/compiler/src/util';
 import { Component } from '@angular/core';
 import { Empleado } from './empleado.model';
+import { ServicioEmpleadosService } from './servicio-empleados.service';
 
 @Component({
   selector: 'app-root',
@@ -10,6 +11,10 @@ import { Empleado } from './empleado.model';
 export class AppComponent {
   titulo = 'Listado de Empleados';
 
+  // crear un contructor para la inyeccion se produce siempre desde el constructor.(servicios)
+  constructor(private miServicio:ServicioEmpleadosService){
+
+  }
 
   //array de tipo empleado.
 emplados:Empleado[]=[
@@ -26,9 +31,14 @@ agregarEmpleado(){
 
   // Instanciar nuestra clase empleado y Cogemos los datos siguientes del formulario. 
   let miEmpleado=new Empleado(this.cuadroNombre,this.cuadroApellido,this.cuadroCargo,this.cuadroSalario);
+//usar el servicio.
+this.miServicio.muestraMensaje("Nombre del empleado: " + miEmpleado.nombre);
+
   // agregar miEmpleado al array para que se muestre.
   this.emplados.push(miEmpleado);
 }
+
+
 
 // para que guarde la informacion del nombre del formulario.
 cuadroNombre:string="";
